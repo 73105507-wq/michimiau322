@@ -1,0 +1,327 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Michimiau322 | Empresa en ti</title>
+    <style>
+        /* --- ESTILOS CSS (Estilo WordPress con Animaciones) --- */
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #ff7675;
+            --bg-color: #f9f9f9;
+            --text-color: #333;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Animación de entrada suave para toda la página */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header & Nav */
+        header {
+            background-color: var(--white);
+            border-bottom: 3px solid var(--accent-color);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .header-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo h1 {
+            font-size: 24px;
+            color: var(--primary-color);
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--primary-color);
+            font-weight: 600;
+            position: relative;
+            transition: color 0.3s;
+        }
+
+        /* Línea interactiva que se mueve bajo el menú */
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 80px 20px;
+            text-align: center;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h2 {
+            font-size: 40px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+
+        /* Botón con pulso y movimiento */
+        .btn-interactivo {
+            background-color: var(--accent-color);
+            color: var(--white);
+            padding: 12px 25px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(255, 118, 117, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .btn-interactivo:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(255, 118, 117, 0.6);
+            background-color: #e84393;
+        }
+
+        .btn-interactivo:active {
+            transform: translateY(1px);
+        }
+
+        /* Layout Principal */
+        .main-container {
+            max-width: 1100px;
+            margin: 40px auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 30px;
+            padding: 0 20px;
+        }
+
+        @media (max-width: 768px) {
+            .main-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Tarjetas con efecto de levitación al pasar el mouse */
+        .card {
+            background: var(--white);
+            padding: 30px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            animation: fadeInUp 1s ease-out;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
+        .card h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        /* Barra Lateral */
+        aside {
+            background: var(--white);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            height: fit-content;
+            animation: fadeInUp 1.2s ease-out;
+            transition: transform 0.3s ease;
+        }
+
+        aside:hover {
+            transform: translateY(-3px);
+        }
+
+        aside h3 {
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        /* Alerta interactiva con animación de caída */
+        #mensaje-sorpresa {
+            display: none;
+            background-color: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+            text-align: center;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .slideDown {
+            display: block !important;
+            animation: slideDownIn 0.4s ease-out forwards;
+        }
+
+        @keyframes slideDownIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <h1>Michimiau<span>322</span></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#contacto">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Empresa en ti</h2>
+            <p>El lugar donde transformamos tus ideas en soluciones reales. Sencillo, elegante y pensado para ti.</p>
+            <button class="btn-interactivo" id="btnAccion">¡Haz clic aquí!</button>
+            
+            <div id="mensaje-sorpresa">Miau! Gracias por visitarnos en michimiau322.com. Estamos listos para trabajar contigo.</div>
+        </div>
+    </section>
+
+    <div class="main-container">
+        
+        <main id="servicios">
+            <div class="card">
+                <h3>Nuestra Mision</h3>
+                <p>En <strong>Michimiau322</strong> nos enfocamos en potenciar la "Empresa en ti". Creamos entornos digitales accesibles, amigables y con un diseno impecable para que destaques en la web.</p>
+            </div>
+            
+            <div class="card">
+                <h3>¿Por que elegirnos?</h3>
+                <p>Porque no necesitas configuraciones complejas para tener una web hermosa. Un diseno basico pero pulido puede lograr mejores resultados que un sitio sobrecargado.</p>
+            </div>
+        </main>
+
+        <aside id="contacto">
+            <h3>Sobre el Dominio</h3>
+            <p>Estas viendo la version local y de desarrollo para <strong>michimiau322.com</strong>.</p>
+            <br>
+            <h3>Contacto Rapido</h3>
+            <p>Email: info@michimiau322.com</p>
+        </aside>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2026 michimiau322.com - Empresa en ti. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        // Animación interactiva para el botón
+        document.getElementById('btnAccion').addEventListener('click', function() {
+            const mensaje = document.getElementById('mensaje-sorpresa');
+            // Agrega o quita la clase de animación
+            mensaje.classList.toggle('slideDown');
+        });
+
+        // Movimiento suave al hacer clic en el menú (Efecto WordPress Pro)
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const targetId = this.getAttribute('href');
+                if(targetId.startsWith('#') && targetId !== '#') {
+                    e.preventDefault();
+                    document.querySelector(targetId).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
